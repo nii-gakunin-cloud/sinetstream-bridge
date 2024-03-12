@@ -1,0 +1,90 @@
+version: '3.7'
+services:
+  broker_mqtt_1:
+    build: broker/mqtt
+    image: sinetstream_bridge_test_broker_mqtt
+    hostname: broker_mqtt_1
+    #ports:
+    #  - 1883:1883
+    networks:
+      bridge_test_net:
+        ipv4_address: 192.168.65.11
+  broker_mqtt_2:
+    build: broker/mqtt
+    image: sinetstream_bridge_test_broker_mqtt
+    hostname: broker_mqtt_2
+    #ports:
+    #  - 1883:1883
+    networks:
+      bridge_test_net:
+        ipv4_address: 192.168.65.12
+  broker_mqtt_3:
+    build: broker/mqtt
+    image: sinetstream_bridge_test_broker_mqtt
+    hostname: broker_mqtt_3
+    #ports:
+    #  - 1883:1883
+    networks:
+      bridge_test_net:
+        ipv4_address: 192.168.65.13
+  broker_mqtt_mgmt:
+    build: broker/mqtt
+    image: sinetstream_bridge_test_broker_mqtt
+    hostname: broker_mqtt_mgmt
+    #ports:
+    #  - 1883:1883
+    networks:
+      bridge_test_net:
+        ipv4_address: 192.168.65.19
+  broker_kafka_1:
+    build: broker/kafka
+    image: sinetstream_bridge_test_broker_kafka
+    hostname: broker_kafka_1
+    #ports:
+    #  - 9092:9092
+    networks:
+      bridge_test_net:
+        ipv4_address: 192.168.65.21
+  broker_kafka_2:
+    build: broker/kafka
+    image: sinetstream_bridge_test_broker_kafka
+    hostname: broker_kafka_2
+    #ports:
+    #  - 9092:9092
+    networks:
+      bridge_test_net:
+        ipv4_address: 192.168.65.22
+  broker_kafka_3:
+    build: broker/kafka
+    image: sinetstream_bridge_test_broker_kafka
+    hostname: broker_kafka_3
+    #ports:
+    #  - 9092:9092
+    networks:
+      bridge_test_net:
+        ipv4_address: 192.168.65.23
+  bridge:
+    build: bridge
+    image: sinetstream_bridge_test
+    hostname: bridge_1
+    volumes:
+      - ../../..:/sinetstream-bridge
+    #environment:
+    #  RUN_INTERGRATION_TEST: "true"
+    working_dir: /sinetstream-bridge
+    networks:
+      bridge_test_net:
+        ipv4_address: 192.168.65.99
+networks:
+  bridge_test_net:
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.65.0/24
+
+
+# workaround 1:
+# failed to create network XXX: Error response from daemon: Pool overlaps with other one on this address space
+# https://it-afi.com/docker/docker-compose-up-d-%e3%81%97%e3%81%9f%e9%9a%9b%e3%80%81error-pool-overlaps-with-other-one-on-this-address-space-%e3%81%8c%e5%87%ba%e3%81%a6%e3%82%b3%e3%83%b3%e3%83%86%e3%83%8a%e8%b5%b7%e5%8b%95/
+# 1. docker network ls --format json | jq . | less
+# 2. docker network rm NAME or ID

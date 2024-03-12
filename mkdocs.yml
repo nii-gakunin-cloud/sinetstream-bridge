@@ -1,0 +1,6 @@
+site_name: SINETSTream Bridge
+docs_dir: doc
+plugins:
+  - search
+  - mermaid2
+  # - enumerate-headings

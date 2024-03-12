@@ -1,0 +1,14 @@
+# root logger
+handlers=java.util.logging.ConsoleHandler
+.level=INFO
+
+# ConsoleHandler
+java.util.logging.ConsoleHandler.level=FINEST
+java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
+java.util.logging.SimpleFormatter.format=[%1$tF %1$tT] %3$s %4$s: %5$s%n
+
+# logger level
+jp.ad.sinet.stream.bridge.BridgeLogMsg.level=INFO
+jp.ad.sinet.stream.bridge.BridgeMain.level=WARNING
+jp.ad.sinet.stream.bridge.BridgeConfig.level=WARNING
+jp.ad.sinet.stream.bridge.BridgeServer.level=WARNING

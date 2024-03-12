@@ -1,0 +1,20 @@
+# https://qiita.com/Qui/items/40077ce9e33738dd3914
+
+# root logger
+handlers=java.util.logging.ConsoleHandler
+.level=INFO
+
+# ConsoleHandler
+java.util.logging.ConsoleHandler.level=FINEST
+java.util.logging.ConsoleHandler.formatter=java.util.logging.SimpleFormatter
+#java.util.logging.SimpleFormatter.format=[%1$tc] %3$s: %4$s: %5$s%n
+java.util.logging.SimpleFormatter.format=[%1$tF %1$tT] %3$s %4$s: %5$s%n
+
+# logger level
+jp.ad.sinet.stream.bridge.BridgeLogMsg.level=FINE
+jp.ad.sinet.stream.bridge.BridgeMain.level=FINE
+jp.ad.sinet.stream.bridge.BridgeConfig.level=FINE
+jp.ad.sinet.stream.bridge.BridgeServer.level=FINE
+
+# MQTT(patho)
+org.eclipse.paho.level=ALL
