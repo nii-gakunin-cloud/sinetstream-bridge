@@ -31,7 +31,7 @@ SINETStream BridgeはSINETStreamライブラリを用いてメッセージブロ
 SINETStream Bridgeの実行にはJava runtime (version 11以降)が必要である。
 
 https://github.com/nii-gakunin-cloud/sinetstream-bridge/releases
-からsinetstream-xxx.zipをダウンロードし展開する。
+からsinetstream-bridge-xxx.zipをダウンロードし展開する。
 
 ディレクトリ `sinetstream-bridge-xxx` が作成されているはずである。
 SINETStream Bridgeが実行可能なのを確認する。
@@ -180,7 +180,7 @@ $ ./gradlew build
 これを展開する。
 
 ```
-$ tar xf build/distributions/sinetstream-bridge-xxx-SNAPSHOT.tar
+$ tar xf build/distributions/sinetstream-bridge-xxx.tar
 ```
 
 ディレクトリ `sinetstream-bridge-xxx` が作成されているはずである。
